@@ -6,9 +6,9 @@ let flagData = require('./flagData.json');
 
 const Flag = ({ flag }) => {
     return (
-        <div className="Flags">
+        <div className="FlagsContainer">
             {flagData.map(country => (
-                <div>
+                <div className="Flag">
                     {country.iso_2cc.toUpperCase().replace(/./g, char => String.fromCodePoint(char.charCodeAt(0)+127397) )}
                 </div>
             ))}

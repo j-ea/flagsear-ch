@@ -8,8 +8,10 @@ function App() {
     <div className="App">
       <header className="App-header">
           Flag Search
-          <Flag />
       </header>
+      <div>
+        <Flag />
+      </div>
     </div>
   );
 }
