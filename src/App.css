@@ -13,6 +13,12 @@
   padding: 1em;
 }
 
+.Search{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 .FlagsContainer {
   display: flex;
   flex-wrap: wrap;
@@ -21,6 +27,12 @@
 
 .Flag {
   display: flex;
+  flex-direction: column;
   margin: .5em;
   font-size: 5em;
+}
+
+.CountryName {
+  color: white;
+  font-size: .2em;
 }

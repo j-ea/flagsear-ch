@@ -10,6 +10,7 @@ const Flag = ({ flag }) => {
             {flagData.map(country => (
                 <div className="Flag">
                     {country.iso_2cc.toUpperCase().replace(/./g, char => String.fromCodePoint(char.charCodeAt(0)+127397) )}
+                    <p className="CountryName">{country.display_name}</p>
                 </div>
             ))}
         </div>
