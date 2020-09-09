@@ -6,7 +6,6 @@ const country = props => {
         <p>{props.flag.toUpperCase().replace(/./g, (char) => String.fromCodePoint(char.charCodeAt(0) + 127397) )}</p>
         <p className="CountryName">{props.name}</p>
     </div>
-);
-}
+);}
   
   export default country;

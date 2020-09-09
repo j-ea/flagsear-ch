@@ -3,31 +3,24 @@ import "./App.css";
 import Header from "./header"
 import countryData from "./countryData";
 import CountryComponent from "./countryComponent";
+import Fuse from "fuse.js";
 
 export default function App() {
   const [searchValue, setSeachValue] = useState("");
-
-  const filteredCountries =
-    searchValue.length > 1
-      ? countryData.map((country) => {
-          const searchTokens = searchValue.split(/\s+/g).map((s) => s.trim());
-          const searchRegex = new RegExp(
-            searchTokens
-              .map((token) => {
-                return `(?=.*\\b${token}\\b)`;
-              })
-              .join("")
-          );
-          const isMatch = countryData.filter((countryToTest) => {
-            return searchRegex.test(countryToTest.description);
-          });
-          return isMatch;
-        })
-      : countryData;
+  
+  const fuse = new Fuse(countryData, {
+    keys: ["display_name", "description"]
+  });
+  const results = fuse.search(searchValue);
+  //Fuse returns a refIndex. An array with only the items should be returned for the component.
+  const countryResults = searchValue
+    ? results.map((country) => country.item)
+    : countryData;
 
   const handleChange = (event) => {
     setSeachValue(event.target.value);
   };
+
   return (
     <div className="App">
       <Header />
@@ -38,20 +31,14 @@ export default function App() {
         value={searchValue}
       />
       <div className="FlagsContainer">
-        {searchValue.length > 1
-          ? filteredCountries[0].map((countryItem) => (
-              <CountryComponent
-                key={countryItem.iso_2cc}
-                flag={countryItem.iso_2cc}
-                name={countryItem.display_name}
-              />
-            ))
-          : filteredCountries.map((countryItem) => (
-              <CountryComponent
-                key={countryItem.iso_2cc}
-                flag={countryItem.iso_2cc}
-              />
-            ))}
+        {countryResults.map((countryItem) => (
+          <CountryComponent
+            key={countryItem.iso_2cc}
+            flag={countryItem.iso_2cc}
+            name={countryItem.display_name}
+            className="Flag"
+          />
+        ))}
       </div>
     </div>
   );
