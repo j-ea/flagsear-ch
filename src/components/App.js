@@ -1,38 +1,58 @@
-import React, { useState } from 'react';
-import Flag from './flag';
-import Search from './search';
+import React, { useState } from "react";
+import "./App.css";
+import Header from "./header"
+import countryData from "./countryData";
+import CountryComponent from "./countryComponent";
 
-import '../App.css';
+export default function App() {
+  const [searchValue, setSeachValue] = useState("");
 
-const App = () => {
-  const [flags, setFlags] = useState([]);
+  const filteredCountries =
+    searchValue.length > 1
+      ? countryData.map((country) => {
+          const searchTokens = searchValue.split(/\s+/g).map((s) => s.trim());
+          const searchRegex = new RegExp(
+            searchTokens
+              .map((token) => {
+                return `(?=.*\\b${token}\\b)`;
+              })
+              .join("")
+          );
+          const isMatch = countryData.filter((countryToTest) => {
+            return searchRegex.test(countryToTest.description);
+          });
+          return isMatch;
+        })
+      : countryData;
 
-  const search = searchValue => {
-
-    fetch('./flagData.jason')
-      .then(response => response.json())
-      .then(jsonResponse => {
-        if (jsonResponse.Response === "True") {
-          setFlags(jsonResponse.Search);
-        }
-      });
-  	};
-
+  const handleChange = (event) => {
+    setSeachValue(event.target.value);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-          Flag Search
-      </header>
-      <div>
-        <Search search={search}/>
-      </div>
-      <div>
-        {flags.map((flag, index) => (
-          <Flag key={`${index}-${flag.displayName}`} flag={flag} />
-        ))}
+      <Header />
+      <input
+        type="text"
+        placeholder='Seach here. Try "blue white sun"'
+        onChange={handleChange}
+        value={searchValue}
+      />
+      <div className="FlagsContainer">
+        {searchValue.length > 1
+          ? filteredCountries[0].map((countryItem) => (
+              <CountryComponent
+                key={countryItem.iso_2cc}
+                flag={countryItem.iso_2cc}
+                name={countryItem.display_name}
+              />
+            ))
+          : filteredCountries.map((countryItem) => (
+              <CountryComponent
+                key={countryItem.iso_2cc}
+                flag={countryItem.iso_2cc}
+              />
+            ))}
       </div>
     </div>
   );
 }
-
-export default App;
