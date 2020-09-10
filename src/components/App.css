@@ -41,17 +41,15 @@ input{
 .Flag {
   display: flex;
   flex-direction: column;
-  margin: .5em;
-  font-size: 5em;
-  justify-content: center;
+  margin: .35em;
+  font-size: 5.5em;
+  align-content: center;
+  align-items: center;
+  max-width: 88px;
 }
 
-p {
-  display: flex;
-  justify-content: center;
-}
 .CountryName {
   display: flex;;
   color: white;
-  font-size: .2em;
+  font-size: .18em;
 }
