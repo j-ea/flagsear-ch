@@ -1,10 +1,10 @@
 const countryData = [
     { "iso_2cc": "AF",
     "display_name": "Afghanistan",
-    "description": "three equal vertical bands of black (hoist side), red, and green, with the national emblem in white centered on the red band and slightly overlapping the other two bands; the center of the emblem features a mosque with pulpit and flags on either side, below the mosque are numerals for the solar year 1298 (1919 in the Gregorian calendar, the year of Afghan independence from the UK); this central image is circled by a border consisting of sheaves of wheat on the left and right, in the upper-center is an Arabic inscription of the Shahada (Muslim creed) below which are rays of the rising sun over the Takbir (Arabic expression meaning &quot;God is great&quot;), and at bottom center is a scroll bearing the name Afghanistan; black signifies the past, red is for the blood shed for independence, and green can represent either hope for the future, agricultural prosperity, or Islam. Note" },
+    "description": "three equal vertical bands black red green emblem white centered mosque pulpit flag numerals solar year 1298 1919 Gregorian calendar circled border sheaves wheat left right upper-center Arabic inscription Shahada Muslim creed rays rising sun Takbir God is great bottom center scroll past blood shed green hope agricultural prosperity Islam"},
     { "iso_2cc": "AX", 
     "display_name": "Åland Islands",
-    "description":  "the Swedish flag defaced by a red cross symbolising Finland. Today, blue and wh are considered the Finnish colors, but in the early days of Finnish nationalism, red and yellow from the Finnish coat of arms were also an option"},
+    "description":  "Swedish sweden defaced red cross Finland blue white Finnish colors yellow"},
     { "iso_2cc": "AL",
     "display_name": "Albania",
     "description": "red with a black two-headed eagle in the center; the design is claimed to be that of 15th-century hero George Kastrioti SKANDERBEG, who led a successful uprising against the Turks that resulted in a short-lived independence for some Albanian regions (1443-78); an unsubstantiated explanation for the eagle symbol is the tradition that Albanians see themselves as descendants of the eagle; they refer to themselves as &quot;Shqipetare,&quot; which translates as &quot;sons of the eagle&quot;" },

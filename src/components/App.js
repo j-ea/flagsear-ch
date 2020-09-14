@@ -4,6 +4,9 @@ import Header from "./header"
 import countryData from "./countryData";
 import CountryComponent from "./countryComponent";
 import Fuse from "fuse.js";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
+
 
 export default function App() {
   const [searchValue, setSeachValue] = useState("");
@@ -21,15 +24,23 @@ export default function App() {
     setSeachValue(event.target.value);
   };
 
+  const searchIcon = <FontAwesomeIcon icon={faSearch} />
+
   return (
     <div className="App">
       <Header />
-      <input
-        type="text"
-        placeholder='Seach here. Try "blue white sun"'
-        onChange={handleChange}
-        value={searchValue}
-      />
+      <div className="SearchBarContainer">
+        <div className="SearchBar">
+          <input
+            type="text"
+            onChange={handleChange}
+            value={searchValue}
+            required
+          />
+          <span className="FloatingLabel">Try "red circle parrot"</span>
+          <span className="SearchIcon">{searchIcon}</span>
+        </div>
+      </div>
       <div className="FlagsContainer">
         {countryResults.map((countryItem) => (
           <CountryComponent
